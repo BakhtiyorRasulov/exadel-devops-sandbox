@@ -42,8 +42,8 @@ jobs:
     env:
       MONTH: JUNE
       DAY__OF_THE_MONTH: 30
-      Day: "::add-mask::06"
     steps: 
+      - run: echo "::add-mask::06""
       - run: echo "Day - $DAY__OF_THE_MONTH"
       - run: echo "Month - $MONTH"
       - run: echo "Year - $YEAR"
