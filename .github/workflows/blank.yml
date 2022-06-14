@@ -40,11 +40,15 @@ jobs:
     env:
       MONTH: JUNE
     steps: 
-      - run: echo "Day - $DAY__OF_THE_MONTH"
+      - run: echo "Day - $DAY_OF_THE_MONTH"
       - run: echo "Month - $MONTH"
       - run: echo "Year - $YEAR"
+      - name: Masking
+        run:
+          echo $FAV_DAY 
         env:
-          DAY__OF_THE_MONTH: 30
+          DAY_OF_THE_MONTH: 30
+          FAV_DAY: "::add-mask::06"
           
     
       
