@@ -31,7 +31,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
+          echo List file and directories 
           ls -la
+          echo Contents of log.txt
           cat Task1/log.txt
           echo "Hello from $DEPLOY_VER commit"
   second_job:
@@ -45,10 +47,10 @@ jobs:
       - run: echo "Year - $YEAR"
       - name: Masking
         run:
-          echo $FAV_DAY 
+          echo $Day 
         env:
           DAY_OF_THE_MONTH: 30
-          FAV_DAY: "::add-mask::06"
+          Day: "::add-mask::06"
           
     
       
