@@ -42,14 +42,14 @@ jobs:
     env:
       MONTH: JUNE
       DAY__OF_THE_MONTH: 30
+      FAVORITE_DAY_OF_WEEK: ${{ secrets.FAVORITE_DAY_OF_WEEK }}
     steps: 
-      - name: Masking
-        run: echo "::add-mask::Favourite_DAY:06"
-      - name: Day,Month,Year
+      - name: Day,Month,Year,FavDay
         run: |
           echo "Day - $DAY__OF_THE_MONTH"
           echo "Month - $MONTH"
           echo "Year - $YEAR"
+          echo "Favorite Day - $FAVORITE_DAY_OF_WEEK"
 
           
     
