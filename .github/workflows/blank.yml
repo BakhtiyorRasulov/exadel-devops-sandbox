@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  DEPLOY_VER: 202
+  DEPLOY_VER: SHA
   YEAR: 2022
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: List file and dirs; output of log.txt; etc.
         run: |
           echo List file and directories 
           ls -la
@@ -43,13 +43,13 @@ jobs:
       MONTH: JUNE
       DAY__OF_THE_MONTH: 30
     steps: 
-      - run: echo "::add-mask::06"
-      - run: echo "Day - $DAY__OF_THE_MONTH"
-      - run: echo "Month - $MONTH"
-      - run: echo "Year - $YEAR"
       - name: Masking
-        run:
-          echo $Day 
+        run: echo "::add-mask::Favourite_DAY:06"
+      - name: Day,Month,Year
+        run: |
+          echo "Day - $DAY__OF_THE_MONTH"
+          echo "Month - $MONTH"
+          echo "Year - $YEAR"
 
           
     
