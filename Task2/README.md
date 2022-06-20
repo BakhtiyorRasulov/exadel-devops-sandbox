@@ -96,7 +96,7 @@ Now we can use our favorite text editors like vi, vim, nano to create and edit *
 Free disk space: `df -h` _an -h flag will print space in human readable format_
 Free memory: `free -th` _-t flag will include total size column; -h human readable_
 
-To print it as it is inside html we can use <pre> tag. So our text will be inside <pre> </pre>
+To print it as it is inside html we can use pre html tag.
 
 To check our content we can access it with simple browser. As well as we can check it using command line (maybe from other ec2 host)
 I tested both private and public address of ec2 host serving nginx
