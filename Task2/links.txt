@@ -1,0 +1,5 @@
+links:
+Amazon Linux: http://54.208.54.28/		<- with nginx
+Ubuntu linux: 3.90.50.132				<- doesnt have http
+
+Amazon Linux: http://52.28.49.255		<- from different vpc (eu frankfurt), with nginx, used bash script install and configure web service
