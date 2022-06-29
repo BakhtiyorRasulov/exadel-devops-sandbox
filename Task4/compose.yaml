@@ -1,0 +1,9 @@
+services:
+  task:
+    image: sampledockerid001007008/simpleubuntudockerimage
+  backend:
+    image: javaee/springdemo
+    depends_on:
+      - db
+  db:
+    image: mysql
