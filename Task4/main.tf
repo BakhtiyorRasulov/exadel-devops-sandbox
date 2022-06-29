@@ -5,6 +5,48 @@ provider "aws" {
 }
 
 
+resource "aws_security_group" "ubuntu" {
+  ingress {
+    description = "ICMP"
+    protocol = "icmp"
+    from_port = 0
+    to_port = 0
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "SSH"
+    protocol = "tcp"
+    from_port = 22
+    to_port = 22
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "HTTP"
+    protocol = "tcp"
+    from_port = 80
+    to_port = 80
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "https"
+    protocol = "tcp"
+    from_port = 443
+    to_port = 443
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+}
+
+
 resource "aws_instance" "ubuntu-server" {
     ami = var.ubuntu-ami
     instance_type = "t2.micro"
@@ -12,5 +54,6 @@ resource "aws_instance" "ubuntu-server" {
     tags = {
       Name = "Ubuntu"
     }
+    vpc_security_group_ids = ["${aws_security_group.ubuntu.id}"]
     user_data = "${file("ubuntu_tools.sh")}"
 }
