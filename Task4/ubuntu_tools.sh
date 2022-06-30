@@ -1,11 +1,4 @@
 #!/bin/bash
-# Server setup
-sudo apt install nginx -y
-sudo systemctl enable nginx
-sudo systemctl start nginx
-cd /var/www/html/
-sudo bash -c "echo 'Hello World<br> ' > index.html"
-sudo bash -c "uname -sro >> index.html"
 
 # Docker installation
 sudo apt -y remove docker docker-engine docker.io containerd runc

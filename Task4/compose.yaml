@@ -1,6 +1,8 @@
 services:
   task:
-    image: sampledockerid001007008/simpleubuntudockerimage
+    image: sampledockerid001007008/firstdockerimage
+    deploy:
+      replicas: 5
   backend:
     image: javaee/springdemo
     depends_on:
