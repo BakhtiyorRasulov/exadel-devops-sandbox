@@ -1,4 +1,4 @@
-# Task4 of devops sandbox #
+# Task5 of devops sandbox #
 
 - [x] 1. Deploy 3 vmachines in the cloud, install ansible for one of them
 - [x] 2. Ping pong between machines
@@ -12,6 +12,8 @@ We are goint to create additional resources like:
 1. Ubuntu central for Ansible control machine
 2. Ubuntu workstation 1
 3. Ubuntu workstation 2
+
+In machine 1. We will use `ubuntu_tools.sh` to install ansible.
 
 `terraform apply -var-file="secret.tfvars" -auto-approve`
 
