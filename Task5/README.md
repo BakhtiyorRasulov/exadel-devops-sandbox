@@ -9,17 +9,17 @@
 
 We are going to use terraform to automate instance creation and docker installation;
 We are goint to create additional resources like:
-1. Centos central for Ansible control machine
-2. Centos workstation 1
-3. Centos workstation 2
+1. Ubuntu central for Ansible control machine
+2. Ubuntu workstation 1
+3. Ubuntu workstation 2
 
 `terraform apply -var-file="secret.tfvars" -auto-approve`
 
 ### STEP 2 ###
 
 Ansibel comes with different control styles:
-    * Ad-hoc
-    * Playbook
+* Ad-hoc
+* Playbook
 
 Basically ad-hoc is one liner, command line option.
 
@@ -35,15 +35,15 @@ ansible_user=ubuntu
 ansible_ssh_private_key_file=/home/ubuntu/keypair1devops2.pem
 ```
 
-As you can see we can use aws pem file to connect. We should pem file to our machine with:
+As you can see we can use aws pem file to connect. We should copy pem file to our machine with:
 `scp -i "keypair1devops2.pem" keypair1devops2.pem ubuntu@ec2-54-227-123-219.compute-1.amazonaws.com:/home/ubuntu/`
 
 once it is done, we can issue `ansible linux -m ping`
 We should recieve SUCCESS response from each IP.
 
-Additionally, since we didnt add other machines to `~/.ssh/known_hosts` we will get this kind of warning:
+Additionally, since we didn't add other machines to `~/.ssh/known_hosts` we will get this kind of warning:
 ```bash
-The authenticity of host '172.31.90.107 (172.31.90.107)' can't be established.
+The authenticity of host 'IP (IP)' can't be established.
 ED25519 key fingerprint is SHA256:somefingerprint.
 This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])
@@ -59,8 +59,8 @@ host_key_checking = False
 
 Playbook on the other hand uses yaml based infrastructure configuration approach.
 playbook is divided into 2 parts such as:
-    * hosts
-    * tasks
+* hosts
+* tasks
 Hosts section will define which host to connect:
 ```yaml
 - hosts: linux
@@ -78,15 +78,15 @@ vars:
     default_container_command: sleep 1d
 ```
 To access these variable jinja2 templating is used.
-container_count is how many containers to create (deploy: replicas)
-default_container_name: is container name
-default_container_image any container image (maybe hello-world, ubuntu)
-default_container_command command to do inside container
+* container_count is how many containers to create
+* default_container_name: is container name
+* default_container_image any container image (maybe hello-world, ubuntu)
+* default_container_command command to do inside container
 
 Tasks section will define what kind of tasks should be done.
-Tasks inside section are built-in modules of ansible which can connect with differen applications.
+Inside tasks section are built-in modules of ansible which can connect with different applications.
 
-For example if we want to `apt update` ubuntu machine:
+For example if we want to `apt update` before installing aptitude package in ubuntu machine:
 ```yaml
 apt:
     name: aptitude
@@ -123,4 +123,5 @@ to manage docker, pull or run, community.docker.docker_image, community.docker.d
     with_sequence: count={{ container_count }}
 ```
 
-This `with_sequence: count=4` is ansible way of for loop since `container_count` is set to 4. It will run 4 times.
+This `with_sequence: count=4` is ansible way of for loop. 
+Since `container_count` is set to 4. It will run 4 times.
