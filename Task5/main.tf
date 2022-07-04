@@ -47,35 +47,35 @@ resource "aws_security_group" "standard_in_out" {
 }
 
 
-resource "aws_instance" "centos-ansible" {
-    ami = var.centos-ami
+resource "aws_instance" "ubuntu-ansible" {
+    ami = var.ubuntu-ami
     instance_type = "t2.micro"
     key_name = "keypair1devops2"
     tags = {
-      Name = "CentosAnsibleControlCentre"
+      Name = "AnsibleControlCentre"
     }
     vpc_security_group_ids = ["${aws_security_group.standard_in_out.id}"]
     user_data = "${file("ubuntu_tools.sh")}"
 }
 
 
-resource "aws_instance" "centos2" {
-    ami = var.centos-ami
+resource "aws_instance" "ubuntu1" {
+    ami = var.ubuntu-ami
     instance_type = "t2.micro"
     key_name = "keypair1devops2"
     tags = {
-      Name = "CentosMachine1"
+      Name = "Machine1"
     }
     vpc_security_group_ids = ["${aws_security_group.standard_in_out.id}"]
 }
 
 
-resource "aws_instance" "centos1" {
-    ami = var.centos-ami
+resource "aws_instance" "ubuntu2" {
+    ami = var.ubuntu-ami
     instance_type = "t2.micro"
     key_name = "keypair1devops2"
     tags = {
-      Name = "CentosMachine2"
+      Name = "Machine2"
     }
     vpc_security_group_ids = ["${aws_security_group.standard_in_out.id}"]
 

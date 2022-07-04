@@ -1,6 +1,5 @@
 #!/bin/bash
 
-sudo yum -y update
-sudo yum -y install epel-repo
-sudo yum -y update
-sudo yum -y install ansible
+sudo apt -y update
+sudo apt -y upgrade
+sudo apt -y install ansible

@@ -1,0 +1,7 @@
+- name: devopstask5
+  hosts: linux
+  tasks:
+    - name: Install docker on machines
+      yum:
+        name: docker
+        state: present
